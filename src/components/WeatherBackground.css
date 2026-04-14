@@ -1,0 +1,97 @@
+.weather-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  transition: background 2s ease;
+}
+
+/* Day Theme styling */
+.theme-day {
+  background-image: url('/bg-day.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.theme-day .celestial-body {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #fffdda 0%, #fcd670 50%, transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 80px 40px rgba(252, 214, 112, 0.4);
+  z-index: 1;
+}
+
+/* Night theme styling (very serene, dark) */
+.theme-night {
+  background-image: url('/bg-night.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.theme-night .celestial-body {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #f4f6f0;
+  box-shadow: 0 0 60px 20px rgba(244, 246, 240, 0.2), inset -15px -10px 20px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Clouds Base */
+.sky-cloud {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  z-index: 2;
+  filter: blur(4px);
+}
+
+.theme-night .sky-cloud {
+  filter: blur(8px) brightness(0.4);
+}
+
+/* Stars */
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.sky-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Texture overlay for continuity with the Islamic theme */
+.islamic-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: radial-gradient(var(--gold-primary) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  z-index: 3;
+  pointer-events: none;
+}

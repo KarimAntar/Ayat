@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useSwipeable } from 'react-swipeable';
 import { prayers } from './data/prayers';
+import WeatherBackground from './components/WeatherBackground';
 import './index.css';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const lastScrollTime = React.useRef(0);
 
   const slideVariants = {
     hiddenRight: {
@@ -74,8 +76,31 @@ function App() {
       }
     };
 
+    const handleWheel = (e) => {
+      const slideContent = e.target.closest('.slide-content');
+      // If we are hovering over text that is natively scrollable because it's too long, prioritize vertical text scrolling
+      if (slideContent && slideContent.scrollHeight > slideContent.clientHeight) {
+        return; 
+      }
+
+      const now = Date.now();
+      if (now - lastScrollTime.current > 800) { // 800ms cooldown to prevent aggressive trackpad skipping
+        if (e.deltaY > 30) {
+          handleNext();
+          lastScrollTime.current = now;
+        } else if (e.deltaY < -30) {
+          handlePrev();
+          lastScrollTime.current = now;
+        }
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('wheel', handleWheel);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('wheel', handleWheel);
+    };
   }, [currentIndex]);
 
   const currentSlide = prayers[currentIndex];
@@ -95,7 +120,7 @@ function App() {
 
   return (
     <div className="app-container" {...handlers} dir="rtl">
-      <div className="islamic-pattern"></div>
+      <WeatherBackground />
       
       <AnimatePresence initial={false} mode='wait'>
         <motion.div

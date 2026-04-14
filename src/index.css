@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+
+:root {
+  --bg-dark-green: #0a1f18;
+  --bg-gradient: linear-gradient(135deg, #0a1f18 0%, #03140e 100%);
+  --gold-primary: #d4af37;
+  --gold-light: #fbeea0;
+  --text-white: #f8f9fa;
+  --text-dim: #a8b8b0;
+  
+  --font-arabic-classic: 'Amiri', serif;
+  --font-arabic-modern: 'Cairo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-arabic-modern);
+  background: var(--bg-gradient);
+  background-color: var(--bg-dark-green);
+  color: var(--text-white);
+  overflow: hidden; /* Important for presentation feel */
+  user-select: none;
+  touch-action: none; /* Helps with swipe gestures */
+}
+
+/* Base styles for the presentation container */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle background pattern (geometric) */
+.islamic-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(var(--gold-primary) 1px, transparent 1px), radial-gradient(var(--gold-primary) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  z-index: 0;
+}
+
+/* Slide Cards */
+.slide {
+  position: absolute;
+  width: 90%;
+  max-width: 800px;
+  height: 85%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Typography styles */
+.slide-title {
+  color: var(--gold-primary);
+  font-family: var(--font-arabic-modern);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-subtitle {
+  color: var(--gold-light);
+  font-family: var(--font-arabic-modern);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.slide-content {
+  color: var(--text-white);
+  font-family: var(--font-arabic-classic);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  text-align: center;
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for hidden scrollbar */
+}
+
+/* Hide scrollbar for cleaner look */
+.slide-content::-webkit-scrollbar {
+  width: 4px;
+}
+.slide-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slide-content::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
+
+/* Nav Controls */
+.nav-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 20;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: var(--gold-light);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: rgba(212, 175, 55, 0.2);
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--gold-primary);
+  transform: scale(1.5);
+}

@@ -167,6 +167,16 @@ function App() {
           <ChevronRight size={24} />
         </button>
       </div>
+
+      <a 
+        href="https://karims.dev" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="copyright-badge"
+        dir="ltr"
+      >
+        © {new Date().getFullYear()} Karim Development
+      </a>
     </div>
   );
 }

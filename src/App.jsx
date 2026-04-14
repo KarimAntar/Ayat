@@ -11,35 +11,35 @@ function App() {
 
   const slideVariants = {
     hiddenRight: {
-      x: "100%",
+      x: 50,
       opacity: 0,
     },
     hiddenLeft: {
-      x: "-100%",
+      x: -50,
       opacity: 0,
     },
     visible: {
-      x: "0",
+      x: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut"
+        duration: 0.3,
+        ease: "easeOut"
       }
     },
     exitRight: {
-      x: "100%",
+      x: 50,
       opacity: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut"
+        duration: 0.3,
+        ease: "easeIn"
       }
     },
     exitLeft: {
-      x: "-100%",
+      x: -50,
       opacity: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeInOut"
+        duration: 0.3,
+        ease: "easeIn"
       }
     }
   };
@@ -80,6 +80,19 @@ function App() {
 
   const currentSlide = prayers[currentIndex];
 
+  const renderVerseNumbers = (text) => {
+    if (!text) return text;
+    // Split text by the precise verse numbering structure ﴿...﴾
+    const parts = text.split(/(﴿[٠١٢٣٤٥٦٧٨٩]+﴾)/g);
+    return parts.map((part, index) => {
+      // Check if this part string is a verse number
+      if (part.match(/^﴿[٠١٢٣٤٥٦٧٨٩]+﴾$/)) {
+        return <span key={index} className="verse-number">{part}</span>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="app-container" {...handlers} dir="rtl">
       <div className="islamic-pattern"></div>
@@ -96,7 +109,7 @@ function App() {
           <h1 className="slide-title">{currentSlide.title}</h1>
           <h3 className="slide-subtitle">{currentSlide.subtitle}</h3>
           <div className="slide-content">
-            {currentSlide.content}
+            {renderVerseNumbers(currentSlide.content)}
           </div>
         </motion.div>
       </AnimatePresence>

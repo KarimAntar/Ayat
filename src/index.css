@@ -57,14 +57,14 @@ body {
 /* Slide Cards */
 .slide {
   position: absolute;
-  width: 90%;
-  max-width: 800px;
-  height: 85%;
+  width: 96vw;
+  max-width: 1600px;
+  height: 85vh;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 20px;
-  padding: 3rem 2rem;
+  padding: 3rem 2vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,7 +78,7 @@ body {
 .slide-title {
   color: var(--gold-primary);
   font-family: var(--font-arabic-modern);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -87,7 +87,7 @@ body {
 .slide-subtitle {
   color: var(--gold-light);
   font-family: var(--font-arabic-modern);
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   margin-bottom: 2rem;
   opacity: 0.8;
 }
@@ -95,14 +95,19 @@ body {
 .slide-content {
   color: var(--text-white);
   font-family: var(--font-arabic-classic);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  line-height: 1.8;
+  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+  line-height: 2;
   white-space: pre-wrap;
   text-align: center;
   width: 100%;
-  max-height: 60vh;
+  max-height: 65vh;
   overflow-y: auto;
-  padding-right: 10px; /* Space for hidden scrollbar */
+  padding-right: 15px; /* Space for hidden scrollbar */
+}
+
+.verse-number {
+  color: var(--gold-primary);
+  margin: 0 4px;
 }
 
 /* Hide scrollbar for cleaner look */

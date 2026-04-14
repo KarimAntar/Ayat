@@ -80,7 +80,7 @@ function App() {
       const slideContent = e.target.closest('.slide-content');
       // If we are hovering over text that is natively scrollable because it's too long, prioritize vertical text scrolling
       if (slideContent && slideContent.scrollHeight > slideContent.clientHeight) {
-        return; 
+        return;
       }
 
       const now = Date.now();
@@ -121,7 +121,7 @@ function App() {
   return (
     <div className="app-container" {...handlers} dir="rtl">
       <WeatherBackground />
-      
+
       <AnimatePresence initial={false} mode='wait'>
         <motion.div
           key={currentIndex}
@@ -140,9 +140,9 @@ function App() {
       </AnimatePresence>
 
       <div className="nav-controls" dir="ltr">
-        <button 
-          className="nav-btn" 
-          onClick={handlePrev} 
+        <button
+          className="nav-btn"
+          onClick={handlePrev}
           disabled={currentIndex === 0}
           aria-label="Previous Slide"
         >
@@ -151,16 +151,16 @@ function App() {
 
         <div className="progress-dots">
           {prayers.map((_, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`dot ${idx === currentIndex ? 'active' : ''}`}
             />
           ))}
         </div>
 
-        <button 
-          className="nav-btn" 
-          onClick={handleNext} 
+        <button
+          className="nav-btn"
+          onClick={handleNext}
           disabled={currentIndex === prayers.length - 1}
           aria-label="Next Slide"
         >
@@ -168,10 +168,10 @@ function App() {
         </button>
       </div>
 
-      <a 
-        href="https://karims.dev" 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <a
+        href="https://karims.dev"
+        target="_blank"
+        rel="noopener noreferrer"
         className="copyright-badge"
         dir="ltr"
       >
